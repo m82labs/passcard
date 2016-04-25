@@ -1,6 +1,6 @@
 # PassCard
 
-PassCard is a simple system to create strong passwords on the go, with the need of a smartphone or computer program.
+PassCard is a simple system to create strong passwords on the go, without the need of a smartphone or computer program.
 
 ## Overview
 PassCard generates a key card you can carry around with you to create passwords whenever you need them. When you use PassCard to generate a card, you simply supply it with a passphrase of your choosing (which can be used to re-generate your card in the future), and PassCard will generate a printable card.
