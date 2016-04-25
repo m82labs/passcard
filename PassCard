@@ -1,0 +1,55 @@
+#!/usr/bin/env python
+
+# PassCard.py
+# -*- coding: utf-8 -*-
+
+"""
+Program: PassCard is a program used to generate a card that helps the user
+         create secure, easy to remember passwords.
+Author:  Mark Wilkinson
+Date:    2016.04.24
+"""
+
+import hashlib
+import sys
+import uuid
+import argparse
+from string import ascii_lowercase, letters, digits, punctuation
+
+# Parse command line arguments
+parser = argparse.ArgumentParser()
+parser.add_argument("-p","--passphrase", help="Passphrase used to generate a PassCard")
+args = parser.parse_args()
+
+if args.passphrase:
+    passphrase = args.passphrase
+else:
+    passphrase = str(uuid.uuid1())
+
+# Split pass phase, hash, and concatenate
+split_point = len(passphrase)/2
+ph = hashlib.sha512()
+
+ph.update(passphrase[:split_point])
+big_hash = str(ph.hexdigest())
+
+ph.update(passphrase[split_point+1:])
+big_hash += str(ph.hexdigest())
+
+# For each character we plan to print to our grid 
+# (ASCII lower characters and digits) we generate
+# 3 psudoe-random characters from our big_hash
+grid = {}
+big_hash_pos = 0
+chunk_size = 2
+rand_chars = 3
+char_pool = [i for i in  punctuation + letters + digits + letters + digits if i not in ('"','/','\\','{','}','[',']',')','(',"'",';','.','`',',') ]
+
+for gridpos in ascii_lowercase + digits:
+    grid[gridpos] = ''
+    for i in range(0,rand_chars):
+        big_hash_pos += chunk_size
+        grid[gridpos] += char_pool[(int(big_hash[big_hash_pos:big_hash_pos+chunk_size],16) % len(char_pool))]
+
+for c in ascii_lowercase + digits:
+    print c+":"+grid[c]
