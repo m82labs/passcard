@@ -100,7 +100,7 @@ if 'output' in locals():
     output.write(outHTML.replace('{{passgrid}}',passgrid))
     print "\nFile generated.\n"
 else:
-    print "\n-------------------------------\n " + passgrid + "\n-------------------------------\n" 
+    print "\n------------------------------\n" + passgrid + "\n------------------------------\n" 
 
 # Output the passphrase used to generate the card
 print "The following passphrase can be used to regenerate your card:\n" + passphrase
