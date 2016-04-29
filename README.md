@@ -79,3 +79,4 @@ My big passphrase for passcard
 
 This produces the following:
 
+![Image of PassCard](https://raw.githubusercontent.com/m82labs/passcard/master/PassCard.png)
