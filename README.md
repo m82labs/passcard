@@ -29,3 +29,53 @@ The implementation of this system is fairly straight-forward and seems like it w
 * The users PassCard generation pass phrase is split in two, each chunk is hashed, and those two hashed values are converted to hex and concatenated. This gives us a nice long psuedo-random string.
 * This long string is broken into chunks of 2 characters, each chunk is converted to an integer mod 94 (length of our pool), those integers are then used to retrieve 3 characters at a time from our pool and assign them to a-z and 0-9 for the grid.
 
+## Examples
+
+### With a user supplied passphrase, for a-z and 0-9
+```
+$ ./passcard -p 'My big passphrase for passcard' -d
+
+------------------------------
+a:zqd b:yoi c:517 d:bx3 e:B6U
+f:2pX g:Ch# h:BZ+ i:bP_ j:zMJ
+k:?X= l:tsS m:Yg0 n:6W8 o:!MD
+p:*Oc q:R!K r:J41 s:WZT t:7Gh
+u:aL@ v:Pt$ w:d7_ x:3OR y:o$i
+z:j8i 0:4TZ 1:DyL 2:4+u 3:tvM
+4:5+N 5:YsJ 6:1*h 7:iJy 8:8Z5
+9:iDI 
+------------------------------
+
+The following passphrase can be used to regenerate your card:
+My big passphrase for passcard
+```
+
+### With no supplied passphrasem for a-z
+```
+$ ./passcard
+
+------------------------------
+a:r8O b:kC9 c:yoZ d:zg8 e:QH$
+f:1Hs g:G** h:4IV i:uN_ j:TR0
+k:7J0 l:AQr m:SIv n:qgX o:3fr
+p:TXB q:jpf r:TQu s:@dM t:aaI
+u:cYC v:szI w:MU1 x:7Au y:U$s
+z:_Z- 
+------------------------------
+
+The following passphrase can be used to regenerate your card:
+9455e50a-0db3-11e6-bc61-a088b4506b48
+```
+
+### Printable 3.5inx2.0in HTML Output
+```
+$ ./passcard -p 'My big passphrase for passcard' -d -o pcard.html
+
+File generated.
+
+The following passphrase can be used to regenerate your card:
+My big passphrase for passcard
+```
+
+This produces the following:
+
