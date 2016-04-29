@@ -67,7 +67,7 @@ The following passphrase can be used to regenerate your card:
 9455e50a-0db3-11e6-bc61-a088b4506b48
 ```
 
-### Printable 3.5inx2.0in HTML Output
+### Printable 3.5in x 2.0in HTML Output
 ```
 $ ./passcard -p 'My big passphrase for passcard' -d -o pcard.html
 
