@@ -82,18 +82,7 @@ i = 1
 # Create an output grid
 for c in key_chars:
     if i >= 1:
-        passgrid += c + ':' + grid[c]
-
-    # Group character sets in lines of 5 groups
-    if i % 5 == 0:
-        passgrid += '\n'
-        # Reset the counter
-        i = 0
-    else:
-        passgrid += ' '
-
-    # Increment the loop counter
-    i += 1
+        passgrid += c + ':' + grid[c] + ' '
 
 # Output our pass grid either to HTML or console
 if 'output' in locals():
