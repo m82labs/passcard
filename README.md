@@ -50,7 +50,7 @@ The following passphrase can be used to regenerate your card:
 My big passphrase for passcard
 ```
 
-### With no supplied passphrasem for a-z
+### With no supplied passphrase for a-z
 ```
 $ ./passcard
 
